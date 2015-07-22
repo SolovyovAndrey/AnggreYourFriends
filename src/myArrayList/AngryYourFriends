@@ -1,0 +1,113 @@
+package day8;
+
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+
+/**
+ * Created by Андрій on 21.07.2015.
+ */
+public class AggreYourFriends extends JPanel {
+    public int X;
+    public int Y;
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public void setY(int y) {
+        Y = y;
+    }
+
+    @Override
+    public int getX() {
+        return X;
+    }
+
+    @Override
+    public int getY() {
+        return Y;
+    }
+
+    public AggreYourFriends() {
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        AggreYourFriends AYF = new AggreYourFriends();
+        int x = AYF.getX();
+        int y = AYF.getY();
+
+        g.setColor(Color.RED);
+        g.fillOval(x, y, 100, 100);
+
+        //       repaint(x,y,100,100);
+
+    }
+
+
+    public static void main(String[] args) {
+        start(100, 100);
+
+    }
+
+
+    public static void start(int x, int y) {
+        AggreYourFriends boll = new AggreYourFriends();
+        boll.setX(x);
+        boll.setY(y);
+        JFrame f = new JFrame(" Push to boll ");
+        f.setMinimumSize(new Dimension(600, 600));
+        f.setLocation(300, 100);
+        f.add(boll);
+        boll.addMouseListener(new ButtonListener());
+
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+
+    }
+
+    public static class ButtonListener implements MouseListener {
+
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println("You Win !!!");
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+            if (e.getX() < 630 && e.getX() > 100 && e.getY() < 630 && e.getY() > 100) {
+                AggreYourFriends AF = new AggreYourFriends();
+                AF.setX(500);
+                AF.setY(500);
+
+
+            }
+
+        }
+
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+    }
